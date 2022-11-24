@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/Task-planner/static/css/main.aaaf48ca.css",
-    "main.js": "/Task-planner/static/js/main.f574a6c2.js",
+    "main.js": "/Task-planner/static/js/main.86bddb78.js",
     "index.html": "/Task-planner/index.html",
     "main.aaaf48ca.css.map": "/Task-planner/static/css/main.aaaf48ca.css.map",
-    "main.f574a6c2.js.map": "/Task-planner/static/js/main.f574a6c2.js.map"
+    "main.86bddb78.js.map": "/Task-planner/static/js/main.86bddb78.js.map"
   },
   "entrypoints": [
     "static/css/main.aaaf48ca.css",
-    "static/js/main.f574a6c2.js"
+    "static/js/main.86bddb78.js"
   ]
 }
