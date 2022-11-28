@@ -4,7 +4,6 @@ import css from './TaskCounter.module.css';
 
 export const TaskCounter = () => {
   const tasks = useSelector(getTasks);
-  console.log('TASKS', tasks);
 
   const count = tasks.reduce(
     (acc, task) => {

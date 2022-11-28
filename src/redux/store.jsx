@@ -4,7 +4,7 @@ import { filtersReducer } from './filtersSlice';
 import storage from 'redux-persist/lib/storage';
 import {
   persistReducer,
-  // persistStore,
+  persistStore,
   FLUSH,
   REHYDRATE,
   PAUSE,
@@ -12,27 +12,25 @@ import {
   PURGE,
   REGISTER,
 } from 'redux-persist';
+import { combineReducers } from 'redux';
 
 const persistTasksConfig = {
   key: 'tasks',
   storage,
+  blacklist: ['filters'],
 };
 
-const persistFiltersConfig = {
-  key: 'filters',
-  storage,
-};
+const rootReducer = combineReducers({
+  tasks: tasksReducer,
+  filters: filtersReducer,
+});
 
-const persistedTasksReducer = persistReducer(persistTasksConfig, tasksReducer);
-const persistedFiltersReducer = persistReducer(
-  persistFiltersConfig,
-  filtersReducer
-);
+const persistedTasksReducer = persistReducer(persistTasksConfig, rootReducer);
 
 export const store = configureStore({
   reducer: {
     tasks: persistedTasksReducer,
-    filters: persistedFiltersReducer,
+    filters: persistedTasksReducer,
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
@@ -42,4 +40,4 @@ export const store = configureStore({
     }),
 });
 
-// export const persistor = persistStore(store);
+export const persistor = persistStore(store);
