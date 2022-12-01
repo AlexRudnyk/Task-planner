@@ -17,7 +17,6 @@ import { combineReducers } from 'redux';
 const persistTasksConfig = {
   key: 'tasks',
   storage,
-  blacklist: ['filters'],
 };
 
 const rootReducer = combineReducers({
@@ -25,12 +24,12 @@ const rootReducer = combineReducers({
   filters: filtersReducer,
 });
 
-const persistedTasksReducer = persistReducer(persistTasksConfig, rootReducer);
+const persistedReducer = persistReducer(persistTasksConfig, rootReducer);
 
 export const store = configureStore({
   reducer: {
-    tasks: persistedTasksReducer,
-    filters: persistedTasksReducer,
+    tasks: persistedReducer,
+    filters: filtersReducer,
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
